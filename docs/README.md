@@ -30,6 +30,7 @@ python -m unittest
 ## Team
 
 <!-- Add yourself here on your Git lesson: - Your Name (role) -->
+- Priyanshu (Building StudySprint)
 
 - (your squad will add themselves here)
 
