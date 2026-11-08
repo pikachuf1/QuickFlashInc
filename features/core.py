@@ -9,9 +9,18 @@ def check_answer(card, guess):
     return guess.strip().lower() == card["answer"].strip().lower()
 
 
+def progress_bar(position, total):
+    if total <= 0:
+        return "[----------] 0/0"
+    filled = min(10, max(0, int((position / total) * 10)))
+    bar = "[" + ("#" * filled) + ("-" * (10 - filled)) + "] " + str(position) + "/" + str(total)
+    return bar
+
+
 def run_quiz(cards, ask=input, show=print):
     score = 0
-    for card in cards:
+    for index, card in enumerate(cards, start=1):
+        show(progress_bar(index, len(cards)))
         guess = ask(card["question"] + " ")
         if check_answer(card, guess):
             show("Correct!")
@@ -52,5 +61,5 @@ def top_card(cards):
 def percent_correct(score, total):
     if total == 0:
         return 0
-    return round(100 * score / (total-0))
+    return round(100 * score / total)
 # 
