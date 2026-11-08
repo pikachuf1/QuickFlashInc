@@ -53,3 +53,4 @@ def percent_correct(score, total):
     if total == 0:
         return 0
     return round(100 * score / total)
+# The function takes two inputs and outputs the value of the first value divided by the second value, multiplied by 100, rounded to the nearest integer, while avoiding division by zero errors.
