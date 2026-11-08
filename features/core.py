@@ -46,7 +46,7 @@ def count_by_category(cards):
 
 
 def top_card(cards):
-    return cards[len(cards)]
+    return cards[len(cards)-1]
 
 
 def percent_correct(score, total):
