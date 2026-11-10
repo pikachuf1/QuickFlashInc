@@ -17,6 +17,23 @@ class TestCore(unittest.TestCase):
         self.assertEqual(card["id"], 2)
         self.assertEqual(len(data["cards"]), 2)
 
+    def test_progress_bar_formats_positions_and_boundaries(self):
+        self.assertEqual(core.progress_bar(3, 8), "[###-------] 3/8")
+        self.assertEqual(core.progress_bar(0, 8), "[----------] 0/8")
+        self.assertEqual(core.progress_bar(8, 8), "[##########] 8/8")
+
+    def test_run_quiz_shows_progress_before_each_question(self):
+        cards = [
+            {"question": "First?", "answer": "yes"},
+            {"question": "Second?", "answer": "no"},
+        ]
+        shown = []
+
+        core.run_quiz(cards, ask=lambda _: "", show=shown.append)
+
+        self.assertEqual(shown[0], "[#####-----] 1/2")
+        self.assertEqual(shown[2], "[##########] 2/2")
+
 
 if __name__ == "__main__":
     unittest.main()
