@@ -10,16 +10,23 @@ def check_answer(card, guess):
 
 
 def progress_bar(current, total):
+releases/v1.0
+    width = 10
+    position = max(0, min(current, total))
+    filled = position * width // total if total else 0
+    return "[" + "#" * filled + "-" * (width - filled) + "] " + str(current) + "/" + str(total)
     length = 10
     filled = 0 if total <= 0 else min(length, max(0, current * length // total))
     return "[" + "#" * filled + "-" * (length - filled) + "] " + str(current) + "/" + str(total)
 
 
+
 def run_quiz(cards, ask=input, show=print):
     score = 0
     total = len(cards)
-    for current, card in enumerate(cards, start=1):
-        show(progress_bar(current, total))
+
+    for index, card in enumerate(cards):
+        show(progress_bar(index + 1, total))
         guess = ask(card["question"] + " ")
         if check_answer(card, guess):
             show("Correct!")

@@ -6,13 +6,13 @@ release goes first. Keep each entry to what a user would notice.
 ## Format
 
 ```
-## v1.0 - YYYY-MM-DD
+## v1.0 - 2026-11-10
 ### Added
-- Short, user-facing description of a new feature (link the ticket #).
+- Added a visible progress bar (#1)
 ### Fixed
-- What was broken and now works.
+- 
 ### Changed
-- Anything that behaves differently than before.
+- 
 ```
 
 <!-- Your first real release note goes below this line. -->
