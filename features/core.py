@@ -9,9 +9,18 @@ def check_answer(card, guess):
     return guess.strip().lower() == card["answer"].strip().lower()
 
 
+def progress_bar(current, total):
+    width = 10
+    position = max(0, min(current, total))
+    filled = position * width // total if total else 0
+    return "[" + "#" * filled + "-" * (width - filled) + "] " + str(current) + "/" + str(total)
+
+
 def run_quiz(cards, ask=input, show=print):
     score = 0
-    for card in cards:
+    total = len(cards)
+    for index, card in enumerate(cards):
+        show(progress_bar(index + 1, total))
         guess = ask(card["question"] + " ")
         if check_answer(card, guess):
             show("Correct!")
